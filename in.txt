@@ -1,0 +1,203 @@
+goroutine 39 [running]:
+github.com/sourcegraph/sourcegraph/internal/conf.(*Store).WaitUntilInitialized(0xc0001aa820)
+	github.com/sourcegraph/sourcegraph@/internal/conf/store.go:147 +0x4d6
+github.com/sourcegraph/sourcegraph/internal/conf.(*client).Watch(0xc0001a8340, 0x2679580)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:111 +0xbb
+github.com/sourcegraph/sourcegraph/internal/conf.Watch(...)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:94
+github.com/sourcegraph/sourcegraph/internal/trace.init.0.func1()
+	github.com/sourcegraph/sourcegraph@/internal/trace/httptrace.go:64 +0x39
+created by github.com/sourcegraph/sourcegraph/internal/trace.init.0
+	github.com/sourcegraph/sourcegraph@/internal/trace/httptrace.go:63 +0x31b
+goroutine 1 [IO wait]:
+internal/poll.runtime_pollWait(0x7f4660f64c10, 0x72, 0xffffffffffffffff)
+	runtime/netpoll.go:184 +0x55
+internal/poll.(*pollDesc).wait(0xc00041a098, 0x72, 0x1000, 0x1000, 0xffffffffffffffff)
+	internal/poll/fd_poll_runtime.go:87 +0x45
+internal/poll.(*pollDesc).waitRead(...)
+	internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc00041a080, 0xc002094000, 0x1000, 0x1000, 0x0, 0x0, 0x0)
+	internal/poll/fd_unix.go:169 +0x1cf
+net.(*netFD).Read(0xc00041a080, 0xc002094000, 0x1000, 0x1000, 0x4d0f71, 0xc00041a080, 0xc00213b000)
+	net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc00016a3e8, 0xc002094000, 0x1000, 0x1000, 0x0, 0x0, 0x0)
+	net/net.go:184 +0x68
+bufio.(*Reader).Read(0xc000d60960, 0xc002090020, 0x5, 0x200, 0x735, 0x800, 0x735)
+	bufio/bufio.go:226 +0x26a
+io.ReadAtLeast(0x29d5aa0, 0xc000d60960, 0xc002090020, 0x5, 0x200, 0x5, 0x735, 0x0, 0x0)
+	io/io.go:310 +0x87
+io.ReadFull(...)
+	io/io.go:329
+github.com/lib/pq.(*conn).recvMessage(0xc002090000, 0xc00270b0e8, 0x735, 0x0, 0x0)
+	github.com/lib/pq@v1.2.0/conn.go:936 +0x103
+github.com/lib/pq.(*conn).recv1Buf(0xc002090000, 0xc00270b0e8, 0x72f)
+	github.com/lib/pq@v1.2.0/conn.go:985 +0x39
+github.com/lib/pq.(*conn).recv1(...)
+	github.com/lib/pq@v1.2.0/conn.go:1006
+github.com/lib/pq.(*conn).simpleExec(0xc002090000, 0xc00213a000, 0x72f, 0xc00270b220, 0x2, 0x2, 0x29f1960, 0xc0001a3930, 0x0)
+	github.com/lib/pq@v1.2.0/conn.go:610 +0x1bc
+github.com/lib/pq.(*conn).Exec(0xc002090000, 0xc00213a000, 0x72f, 0x3b71cf8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	github.com/lib/pq@v1.2.0/conn.go:864 +0x2a1
+github.com/lib/pq.(*conn).ExecContext(0xc002090000, 0x2a09560, 0xc000040088, 0xc00213a000, 0x72f, 0x3b71cf8, 0x0, 0x0, 0x0, 0x0, ...)
+	github.com/lib/pq@v1.2.0/conn_go18.go:42 +0x1aa
+github.com/gchaincl/sqlhooks.(*ExecerContext).execContext(0xc00016a498, 0x2a09560, 0xc000040088, 0xc00213a000, 0x72f, 0x3b71cf8, 0x0, 0x0, 0x2a09560, 0xc000040088, ...)
+	github.com/gchaincl/sqlhooks@v1.1.0/sqlhooks.go:109 +0x257
+github.com/gchaincl/sqlhooks.(*ExecerContext).ExecContext(0xc00016a498, 0x2a09560, 0xc000040088, 0xc00213a000, 0x72f, 0x3b71cf8, 0x0, 0x0, 0x7f4661323400, 0x20300000000000, ...)
+	github.com/gchaincl/sqlhooks@v1.1.0/sqlhooks.go:132 +0x166
+database/sql.ctxDriverExec(0x2a09560, 0xc000040088, 0x7f4660e4a0a8, 0xc00016a498, 0x0, 0x0, 0xc00213a000, 0x72f, 0x3b71cf8, 0x0, ...)
+	database/sql/ctxutil.go:31 +0x227
+database/sql.(*DB).execDC.func2()
+	database/sql/sql.go:1519 +0x1db
+database/sql.withLock(0x29ee0a0, 0xc00041a180, 0xc00270b778)
+	database/sql/sql.go:3184 +0x6d
+database/sql.(*DB).execDC(0xc00208c000, 0x2a09560, 0xc000040088, 0xc00041a180, 0xc000308d30, 0xc00213a000, 0x72f, 0x0, 0x0, 0x0, ...)
+	database/sql/sql.go:1514 +0x4b2
+database/sql.(*Conn).ExecContext(0xc00209a060, 0x2a09560, 0xc000040088, 0xc00213a000, 0x72f, 0x0, 0x0, 0x0, 0xc00270b920, 0x4e39b4, ...)
+	database/sql/sql.go:1821 +0xef
+github.com/golang-migrate/migrate/v4/database/postgres.(*Postgres).Run(0xc0002f4100, 0x29d9100, 0xc002334250, 0xc000308d10, 0x1)
+	github.com/golang-migrate/migrate/v4@v4.6.2/database/postgres/postgres.go:190 +0x107
+github.com/golang-migrate/migrate/v4.(*Migrate).runMigrations(0xc00209e100, 0xc000d60ba0, 0xc00209e100, 0xffffffffffffffff)
+	github.com/golang-migrate/migrate/v4@v4.6.2/migrate.go:746 +0x685
+github.com/golang-migrate/migrate/v4.(*Migrate).Up(0xc00209e100, 0xc0002f4300, 0x0)
+	github.com/golang-migrate/migrate/v4@v4.6.2/migrate.go:284 +0x148
+github.com/sourcegraph/sourcegraph/internal/db/dbconn.DoMigrate(0xc00209e100, 0x0, 0x0)
+	github.com/sourcegraph/sourcegraph@/internal/db/dbconn/dbconn.go:240 +0x2f
+github.com/sourcegraph/sourcegraph/internal/db/dbconn.ConnectToDB(0x0, 0x0, 0x0, 0xc0016cfb70)
+	github.com/sourcegraph/sourcegraph@/internal/db/dbconn/dbconn.go:68 +0x180
+github.com/sourcegraph/sourcegraph/cmd/frontend/internal/cli.Main(0x0, 0x0)
+	github.com/sourcegraph/sourcegraph@/cmd/frontend/internal/cli/serve_cmd.go:87 +0x7c
+github.com/sourcegraph/sourcegraph/cmd/frontend/shared.Main()
+	github.com/sourcegraph/sourcegraph@/cmd/frontend/shared/frontend.go:21 +0x2d
+main.main()
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/main.go:64 +0xa0
+goroutine 71 [select]:
+github.com/sourcegraph/sourcegraph/internal/conf.(*Store).WaitUntilInitialized(0xc0001aa820)
+	github.com/sourcegraph/sourcegraph@/internal/conf/store.go:137 +0x14a
+github.com/sourcegraph/sourcegraph/internal/conf.(*client).Watch(0xc0001a8340, 0x2678d80)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:111 +0xbb
+github.com/sourcegraph/sourcegraph/internal/conf.Watch(...)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:94
+github.com/sourcegraph/sourcegraph/cmd/frontend/internal/auth/userpasswd.init.1.func1()
+	github.com/sourcegraph/sourcegraph@/cmd/frontend/internal/auth/userpasswd/config_watch.go:11 +0x39
+created by github.com/sourcegraph/sourcegraph/cmd/frontend/internal/auth/userpasswd.init.1
+	github.com/sourcegraph/sourcegraph@/cmd/frontend/internal/auth/userpasswd/config_watch.go:10 +0x35
+goroutine 15 [select]:
+go.opencensus.io/stats/view.(*worker).start(0xc0002fe690)
+	go.opencensus.io@v0.22.1/stats/view/worker.go:154 +0x100
+created by go.opencensus.io/stats/view.init.0
+	go.opencensus.io@v0.22.1/stats/view/worker.go:32 +0x57
+goroutine 101 [select]:
+github.com/sourcegraph/sourcegraph/internal/mutablelimiter.(*Limiter).do(0xc00027b360, 0x20)
+	github.com/sourcegraph/sourcegraph@/internal/mutablelimiter/limiter.go:97 +0x2bb
+created by github.com/sourcegraph/sourcegraph/internal/mutablelimiter.New
+	github.com/sourcegraph/sourcegraph@/internal/mutablelimiter/limiter.go:41 +0xee
+goroutine 108 [select]:
+github.com/sourcegraph/sourcegraph/internal/conf.(*Store).WaitUntilInitialized(0xc0001aa820)
+	github.com/sourcegraph/sourcegraph@/internal/conf/store.go:137 +0x14a
+github.com/sourcegraph/sourcegraph/internal/conf.(*client).Watch(0xc0001a8340, 0x2679170)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:111 +0xbb
+github.com/sourcegraph/sourcegraph/internal/conf.Watch(...)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:94
+github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/gitlaboauth.init.0.func2()
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/gitlaboauth/config.go:19 +0x39
+created by github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/gitlaboauth.init.0
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/gitlaboauth/config.go:18 +0x7a
+goroutine 107 [select]:
+github.com/sourcegraph/sourcegraph/internal/conf.(*Store).WaitUntilInitialized(0xc0001aa820)
+	github.com/sourcegraph/sourcegraph@/internal/conf/store.go:137 +0x14a
+github.com/sourcegraph/sourcegraph/internal/conf.(*client).Watch(0xc0001a8340, 0x2679138)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:111 +0xbb
+github.com/sourcegraph/sourcegraph/internal/conf.Watch(...)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:94
+github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/githuboauth.init.0.func1()
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/githuboauth/config.go:13 +0x3d
+created by github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/githuboauth.init.0
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/githuboauth/config.go:12 +0x35
+goroutine 109 [select]:
+github.com/sourcegraph/sourcegraph/internal/conf.(*Store).WaitUntilInitialized(0xc0001aa820)
+	github.com/sourcegraph/sourcegraph@/internal/conf/store.go:137 +0x14a
+github.com/sourcegraph/sourcegraph/internal/conf.(*client).Watch(0xc0001a8340, 0x2679188)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:111 +0xbb
+github.com/sourcegraph/sourcegraph/internal/conf.Watch(...)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:94
+github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/httpheader.init.1.func1()
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/httpheader/config_watch.go:11 +0x39
+created by github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/httpheader.init.1
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/httpheader/config_watch.go:10 +0x35
+goroutine 110 [select]:
+github.com/sourcegraph/sourcegraph/internal/conf.(*Store).WaitUntilInitialized(0xc0001aa820)
+	github.com/sourcegraph/sourcegraph@/internal/conf/store.go:137 +0x14a
+github.com/sourcegraph/sourcegraph/internal/conf.(*client).Watch(0xc0001a8340, 0x26791c8)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:111 +0xbb
+github.com/sourcegraph/sourcegraph/internal/conf.Watch(...)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:94
+github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/openidconnect.init.1.func1()
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/openidconnect/config_watch.go:30 +0x39
+created by github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/openidconnect.init.1
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/openidconnect/config_watch.go:29 +0x35
+goroutine 111 [select]:
+github.com/sourcegraph/sourcegraph/internal/conf.(*Store).WaitUntilInitialized(0xc0001aa820)
+	github.com/sourcegraph/sourcegraph@/internal/conf/store.go:137 +0x14a
+github.com/sourcegraph/sourcegraph/internal/conf.(*client).Watch(0xc0001a8340, 0x26791f8)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:111 +0xbb
+github.com/sourcegraph/sourcegraph/internal/conf.Watch(...)
+	github.com/sourcegraph/sourcegraph@/internal/conf/client.go:94
+github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/saml.init.1.func1()
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/saml/config_watch.go:31 +0x39
+created by github.com/sourcegraph/sourcegraph/enterprise/cmd/frontend/auth/saml.init.1
+	github.com/sourcegraph/sourcegraph@/enterprise/cmd/frontend/auth/saml/config_watch.go:30 +0x35
+goroutine 123 [select]:
+database/sql.(*DB).connectionOpener(0xc00208c000, 0x2a09520, 0xc000400240)
+	database/sql/sql.go:1052 +0xe8
+created by database/sql.OpenDB
+	database/sql/sql.go:722 +0x15d
+goroutine 149 [select]:
+database/sql.(*DB).connectionOpener(0xc001b4e0c0, 0x2a09520, 0xc000464c00)
+	database/sql/sql.go:1052 +0xe8
+created by database/sql.OpenDB
+	database/sql/sql.go:722 +0x15d
+goroutine 150 [select]:
+database/sql.(*DB).connectionResetter(0xc001b4e0c0, 0x2a09520, 0xc000464c00)
+	database/sql/sql.go:1065 +0xfb
+created by database/sql.OpenDB
+	database/sql/sql.go:723 +0x193
+goroutine 124 [select]:
+database/sql.(*DB).connectionResetter(0xc00208c000, 0x2a09520, 0xc000400240)
+	database/sql/sql.go:1065 +0xfb
+created by database/sql.OpenDB
+	database/sql/sql.go:723 +0x193
+goroutine 126 [select]:
+database/sql.(*DB).connectionCleaner(0xc00208c000, 0xdf8475800)
+	database/sql/sql.go:950 +0x370
+created by database/sql.(*DB).startCleanerLocked
+	database/sql/sql.go:937 +0xa7
+goroutine 495 [select]:
+io.(*pipe).Write(0xc00031f9f0, 0xc002ee4000, 0x424, 0x186a0, 0x0, 0x0, 0x0)
+	io/pipe.go:87 +0x1fb
+io.(*PipeWriter).Write(0xc00000e1f8, 0xc002ee4000, 0x424, 0x186a0, 0x17e6800, 0x18073a0, 0x29d9120)
+	io/pipe.go:153 +0x4c
+bufio.(*Reader).writeBuf(0xc0021fcf18, 0x29d9120, 0xc00000e1f8, 0x40a355, 0x17e6800, 0x18073a0)
+	bufio/bufio.go:528 +0x80
+bufio.(*Reader).WriteTo(0xc0021fcf18, 0x29d9120, 0xc00000e1f8, 0x29d9120, 0xc00000e1f8, 0x29d6060)
+	bufio/bufio.go:486 +0x43
+github.com/golang-migrate/migrate/v4.(*Migration).Buffer(0xc001b4f080, 0xc00270ce01, 0x1)
+	github.com/golang-migrate/migrate/v4@v4.6.2/migration.go:140 +0x1a6
+github.com/golang-migrate/migrate/v4.(*Migrate).readUp.func2(0xc001b4f080, 0xc00209e100)
+	github.com/golang-migrate/migrate/v4@v4.6.2/migrate.go:620 +0x2f
+created by github.com/golang-migrate/migrate/v4.(*Migrate).readUp
+	github.com/golang-migrate/migrate/v4@v4.6.2/migrate.go:619 +0x2b4
+goroutine 526 [select]:
+io.(*pipe).Write(0xc00215b310, 0xc002efe000, 0x470, 0x186a0, 0x0, 0x0, 0x0)
+	io/pipe.go:87 +0x1fb
+io.(*PipeWriter).Write(0xc0000d6420, 0xc002efe000, 0x470, 0x186a0, 0x17e6800, 0x18073a0, 0x29d9120)
+	io/pipe.go:153 +0x4c
+bufio.(*Reader).writeBuf(0xc002ccbf18, 0x29d9120, 0xc0000d6420, 0x40a355, 0x17e6800, 0x18073a0)
+	bufio/bufio.go:528 +0x80
+bufio.(*Reader).WriteTo(0xc002ccbf18, 0x29d9120, 0xc0000d6420, 0x29d9120, 0xc0000d6420, 0x29d6060)
+	bufio/bufio.go:486 +0x43
+github.com/golang-migrate/migrate/v4.(*Migration).Buffer(0xc00204d140, 0xc0000b9001, 0x1)
+	github.com/golang-migrate/migrate/v4@v4.6.2/migration.go:140 +0x1a6
+github.com/golang-migrate/migrate/v4.(*Migrate).readUp.func2(0xc00204d140, 0xc00209e100)
+	github.com/golang-migrate/migrate/v4@v4.6.2/migrate.go:620 +0x2f
+created by github.com/golang-migrate/migrate/v4.(*Migrate).readUp
+	github.com/golang-migrate/migrate/v4@v4.6.2/migrate.go:619 +0x2b4
