@@ -19,17 +19,15 @@ type Parser = Parsec Void String
 
 main :: IO ()
 main = do
-  putStr "hello, world\n"
-
-  return ()
-
-ghci :: IO ()
-ghci = do
   z <- readFile "in.txt"
   case parse dumpP "" z of
     Left bundle -> putStr (errorBundlePretty bundle)
     Right dump -> do
       writeFile "out.dot" $ T.unpack $ renderDot $ toDot $ dumpToDot (shorterFiles dump)
+      putStrLn "Wrote out.dot. Now run: dot -Tpng out.dot > out.png"
+
+ghci :: IO ()
+ghci = main
 
 shorterFiles :: Dump -> Dump
 shorterFiles = mapFiles (\file -> maybe file id (List.stripPrefix "github.com/sourcegraph/sourcegraph@/" file))
